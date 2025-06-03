@@ -7,6 +7,7 @@ import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { OctagonAlertIcon } from "lucide-react";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -51,7 +52,12 @@ export const SignUpView = () => {
     setError(null);
     setPending(true);
     await authClient.signUp.email(
-      { name: data.name, email: data.email, password: data.password },
+      {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        callbackURL: "/",
+      },
       {
         onSuccess: () => {
           setPending(false);
@@ -176,21 +182,33 @@ export const SignUpView = () => {
                     type="button"
                     variant={"outline"}
                     className="w-full"
+                    onClick={() => {
+                      authClient.signIn.social({
+                        provider: "google",
+                        callbackURL: "/",
+                      });
+                    }}
                   >
-                    Google
+                    <FaGoogle />
                   </Button>
                   <Button
                     disabled={pending}
                     type="button"
                     variant={"outline"}
                     className="w-full"
+                    onClick={() => {
+                      authClient.signIn.social({
+                        provider: "github",
+                        callbackURL: "/",
+                      });
+                    }}
                   >
-                    Github
+                    <FaGithub />
                   </Button>
                 </div>
                 <div className="text-center text-sm">
                   Already have an account?{" "}
-                  <Link href={"/sing-in"}>Sign in</Link>
+                  <Link href={"/sign-in"}>Sign in</Link>
                 </div>
               </div>
             </form>
