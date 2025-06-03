@@ -1,14 +1,16 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useState } from "react";
+import { FaGithub, FaGoogle } from "react-icons/fa";
+
 import { authClient } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
+import { Card, CardContent } from "@/components/ui/card";
 import { OctagonAlertIcon } from "lucide-react";
 
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -42,7 +44,7 @@ export const SignInView = () => {
     setError(null);
     setPending(true);
     await authClient.signIn.email(
-      { email: data.email, password: data.password },
+      { email: data.email, password: data.password, callbackURL: "/" },
       {
         onSuccess: () => {
           setPending(false);
@@ -127,21 +129,33 @@ export const SignInView = () => {
                     type="button"
                     variant={"outline"}
                     className="w-full"
+                    onClick={() => {
+                      authClient.signIn.social({
+                        provider: "google",
+                        callbackURL: "/",
+                      });
+                    }}
                   >
-                    Google
+                    <FaGoogle />
                   </Button>
                   <Button
                     disabled={pending}
                     type="button"
                     variant={"outline"}
                     className="w-full"
+                    onClick={() => {
+                      authClient.signIn.social({
+                        provider: "github",
+                        callbackURL: "/",
+                      });
+                    }}
                   >
-                    Github
+                    <FaGithub />
                   </Button>
                 </div>
                 <div className="text-center text-sm">
                   Don&apos;t have an account?{" "}
-                  <Link href={"/sing-up"}>Sign up</Link>
+                  <Link href={"/sign-up"}>Sign up</Link>
                 </div>
               </div>
             </form>
