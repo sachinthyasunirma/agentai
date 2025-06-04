@@ -22,12 +22,12 @@ import { DashboardUserButton } from "./dashboard-user-button";
 const firstSection = [
   {
     icon: VideoIcon,
-    lable: "Meetings",
+    label: "Meetings",
     href: "/meetings",
   },
   {
     icon: BotIcon,
-    lable: "Agents",
+    label: "Agents",
     href: "/agents",
   },
 ];
@@ -35,7 +35,7 @@ const firstSection = [
 const secondSection = [
   {
     icon: StarIcon,
-    lable: "Upgrade",
+    label: "Upgrade",
     href: "/upgrade",
   },
 ];
@@ -71,7 +71,7 @@ export const DashboardSidebar = () => {
                     <Link href={item.href}>
                       <item.icon className="size-5" />
                       <span className="text-sm font-medium tracking-tight">
-                        {item.lable}
+                        {item.label}
                       </span>
                     </Link>
                   </SidebarMenuButton>
@@ -100,7 +100,7 @@ export const DashboardSidebar = () => {
                     <Link href={item.href}>
                       <item.icon className="size-5" />
                       <span className="text-sm font-medium tracking-tight">
-                        {item.lable}
+                        {item.label}
                       </span>
                     </Link>
                   </SidebarMenuButton>
