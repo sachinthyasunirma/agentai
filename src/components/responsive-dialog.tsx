@@ -6,13 +6,14 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "@/components/ui/drawer";
+
 import {
   Dialog,
+  DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { DialogContent } from "@radix-ui/react-dialog";
 
 interface ResponsiveDialogProps {
   title: string;
