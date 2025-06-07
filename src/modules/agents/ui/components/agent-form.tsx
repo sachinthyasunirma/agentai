@@ -27,7 +27,7 @@ interface AgentFormProps {
   initialValues?: AgentGetOne;
 }
 
-export const AgentFrom = ({
+export const AgentForm = ({
   onSuccess,
   onCancel,
   initialValues,
