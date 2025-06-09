@@ -70,7 +70,7 @@ export const AgentIdHeader = ({
             <PencilIcon className="size-4 text-black" />
             Edit
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={onEdit}>
+          <DropdownMenuItem onClick={onRemove}>
             <TrashIcon className="size-4 text-black" />
             Delete
           </DropdownMenuItem>
