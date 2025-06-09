@@ -16,7 +16,6 @@ export const NewMeetingDialog = ({ open, onChange }: NewMeetingDialogProps) => {
       open={open}
       onOpenChange={onChange}
     >
-      TODO
       <MeetingForm
         onSuccess={(id) => {
           onChange(false);
